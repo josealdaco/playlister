@@ -4,10 +4,22 @@
 {% block content %}
     <h1>Playlists</h1>
 
-    <a href = '/playlists/new'> New Playlist</a>
-    {% for playlist in playlists %}
-        <h2><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2>
-        <small>{{ playlist.description }}</small>
-        <p> {{playlist.videos}}</p>
-    {% endfor %}
+
+
+    <div class='row '>
+        {% for playlist in playlists %}
+        <div class="card" style="width: 18rem;">
+
+          <img class="card-img-top" src="https://ewscripps.brightspotcdn.com/dims4/default/61a5be9/2147483647/strip/true/crop/640x360+0+34/resize/1280x720!/quality/90/?url=https%3A%2F%2Fmediaassets.wkbw.com%2Fphoto%2F2017%2F10%2F17%2FCAT%20PIC_1508223570861_68991041_ver1.0_640_480.jpeg" alt="Card image cap" width="100%" height="100%">
+
+          <div class="card-body">
+            <h5 class="card-title">{{ playlist.title }}</h5>
+            <p class="card-text">{{ playlist.description }}</p>
+            <a href='/playlists/{{ playlist._id }}' class="btn btn-primary">PLAY</a>
+          </div>
+
+
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
