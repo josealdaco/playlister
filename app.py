@@ -92,4 +92,4 @@ def comments_new():
     return redirect(url_for('playlists_show', playlist_id=comment_id))
 
 if(__name__ == "__main__"):
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=6059)
