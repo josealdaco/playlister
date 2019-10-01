@@ -3,6 +3,7 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
 
+
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Playlister')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
@@ -65,6 +66,7 @@ def playlists_update(playlist_id):
         'description': request.form.get('description'),
         'videos': request.form.get('videos').split()
     }
+    #print("This is the video url", updated_playlist["videos"])
     playlists.update_one(
         {'_id': ObjectId(playlist_id)},
         {'$set': updated_playlist})
@@ -75,7 +77,7 @@ def playlists_update(playlist_id):
 def playlists_delete(playlist_id):
     """Delete one playlist."""
     playlists.delete_one({'_id': ObjectId(playlist_id)})
-    return redirect(url_for('playlists_index'))
+    return redirect(url_for('play_list_index'))
 
 
 ########## COMMENT ROUTES ##########
